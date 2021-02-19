@@ -1,0 +1,43 @@
+.jo-editor-header-padding{
+    padding-left:20px;
+    padding-top:22px;
+    padding-right:20px;
+}
+
+.jo-x-right-padding {
+    padding-right:15px;
+}
+
+.jo-left-panel-padding {
+    padding-top: 15px;
+    padding-bottom:10px;
+    padding-left: 10px;
+}
+
+.jo-topics-format {
+    padding-top: 5px;
+    padding-bottom: 1px;
+    padding-left: 25px;
+    padding-right: 25px;
+    margin: 20px;
+}
+
+.jo-topics-plus-format {
+    padding-top:6px;
+    padding-bottom:1px;
+    padding-left:10px;
+    padding-right:10px;
+    margin:20px;
+}
+
+a {
+    color: inherit;
+}
+
+.jo-color-light-gray {
+    color: lightgray;
+}
+
+.jo-color-white {
+    color: white;
+}

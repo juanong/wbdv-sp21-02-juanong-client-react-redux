@@ -1,0 +1,20 @@
+.jo-title-col {
+    width: 50%;
+}
+
+.jo-owned-col {
+    width: 15%;
+}
+
+.jo-modified-col {
+    width: 20%;
+}
+
+.jo-icons-col {
+    width: 15%;
+}
+
+.jo-header-icon-padding {
+    padding-left: 10px;
+    padding-right: 10px;
+}

@@ -18,7 +18,7 @@ const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
     }
 
     return (
-        <div className="col-sm-6 col-md-4 col-lg-3">
+        <div className="col-sm-6 col-md-4 col-lg-3 col-xl-2">
             <div className="card">
             <div className="card-body card-block">
                 {

@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
 import CourseTable from "./course-table/course-table";
-import CourseGrid from "./course-grid";
+import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
 // Don't forget the curly brackets
 import {Route} from 'react-router-dom'
 import courseService from "../services/course-service";
+import Home from "./home";
 
 // This class is responsible for rendering and managing all components of the course manager
 class CourseManager extends React.Component {
@@ -91,6 +92,9 @@ class CourseManager extends React.Component {
     render() {
         return (
             <div>
+                <Route path="/home">
+                    <Home/>
+                </Route>
                 {/* Pass the courses array and the functions down to the child components */}
                 <Route path="/courses/table">
                     <CourseTable courses={this.state.courses}

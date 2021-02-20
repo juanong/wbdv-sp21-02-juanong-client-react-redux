@@ -1,5 +1,5 @@
 import React from 'react'
-import CourseRow from "../course-row";
+import CourseRow from "../course-row/course-row";
 import {Link} from 'react-router-dom';
 import CourseHeader from "../course-header/course-header";
 // With react, we just import CSS files instead of linking them like in HTML

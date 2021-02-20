@@ -1,7 +1,7 @@
 import React from 'react'
-import CourseCard from "./course-card/course-card";
-import CourseHeader from "./course-header/course-header";
-import SecondaryHeader from "./course-grid-secondary-headeer/course-grid-secondary-header";
+import CourseCard from "../course-card/course-card";
+import CourseHeader from "../course-header/course-header";
+import SecondaryHeader from "../course-grid-secondary-headeer/course-grid-secondary-header";
 
 const CourseGrid = ({courses, deleteCourse, addCourse, updateCourse}) =>
     <div>

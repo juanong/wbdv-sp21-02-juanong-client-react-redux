@@ -36,14 +36,19 @@ const CourseRow = ({deleteCourse, updateCourse, course, key, lastModified, title
             <td className="text-right">
                 {
                     editing &&
-                        <i onClick={() => saveTitle()} className='fas fa-check jo-header-icon-padding'></i>
+                        <div>
+                            <i onClick={() => saveTitle()} className='fas fa-check jo-header-icon-padding'></i>
+                            <i onClick={() => {
+                                setEditing(false)
+                                return deleteCourse(course)}
+                            } className='fas fa-times jo-header-icon-padding'></i>
+                        </div>
                 }
                 {
                     !editing &&
                     <i onClick={() => setEditing(true)}
                        className="fas fa-pencil-alt jo-header-icon-padding"></i>
                 }
-                <i onClick={() => deleteCourse(course)} className='fas fa-times jo-header-icon-padding'></i>
             </td>
         </tr>)
 }

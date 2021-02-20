@@ -24,7 +24,10 @@ const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
                 {
                     editing && <div className='text-right'>
                         <i onClick={() => saveTitle()} className='fas fa-check jo-color-green'></i>
-                        <i onClick={deleteCourse}
+                        <i onClick={() => {
+                            setEditing(false)
+                            return deleteCourse(course)}
+                        }
                            className='fas fa-times jo-color-red'></i>
                     </div>
                 }

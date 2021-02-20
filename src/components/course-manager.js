@@ -47,19 +47,9 @@ class CourseManager extends React.Component {
                     return nextState
                 })
             })
-        // This is an alternate syntax to the code above
-        //.then(course => this.setState(
-        //    (prevState) => ({
-        //        ...prevState,
-        //        courses: [
-        //            ...prevState.courses,
-        //            course
-        //        ]
-        //    })))
     }
 
     deleteCourse = (courseToDelete) => {
-        console.log(courseToDelete)
         // Once the server comes back with a status, we remove the course locally and reset state
         return courseService.deleteCourse(courseToDelete._id)
             .then(status => {

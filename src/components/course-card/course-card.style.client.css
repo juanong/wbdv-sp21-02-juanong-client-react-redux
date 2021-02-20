@@ -1,4 +1,32 @@
 .jo-card-dimensions {
-    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
     margin: 20px;
+}
+
+.jo-card-text {
+    word-wrap: break-word;
+}
+
+.card {
+    overflow: hidden;
+}
+
+.card-block {
+    word-wrap: break-word;
+}
+
+.jo-color-red {
+    color: red;
+}
+
+.jo-color-green {
+    color: green;
+}
+
+.btn-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 160px;
 }

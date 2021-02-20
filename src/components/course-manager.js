@@ -3,7 +3,7 @@ import CourseTable from "./course-table/course-table";
 import CourseGrid from "./course-grid";
 import CourseEditor from "./course-editor/course-editor";
 // Don't forget the curly brackets
-import {BrowserRouter, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import courseService from "../services/course-service";
 
 // This class is responsible for rendering and managing all components of the course manager
@@ -22,11 +22,19 @@ class CourseManager extends React.Component {
 
 
     // All functions that change the state of our DOM need to go here, and pass things down to each component
-    addCourse = () => {
+    addCourse = (newCourseTitle) => {
+        // Get the created date
+        const today = new Date()
+        const year = today.getFullYear()
+        const month = today.getMonth() + 1
+        const day = today.getDate()
+        const formattedDate = month + "/" + day + "/" + year
+
         const newCourse = {
-            title: "New Course",
-            owner: "New Owner",
-            lastModified: "Never"
+            title: newCourseTitle,
+            description: "Some description",
+            owner: "me",
+            lastModified: formattedDate
         }
         // Post the new course to the server
         courseService.createCourse(newCourse)
@@ -49,9 +57,10 @@ class CourseManager extends React.Component {
         //    })))
     }
 
-    deleteCourse = (courseToDelete) =>
+    deleteCourse = (courseToDelete) => {
+        console.log(courseToDelete)
         // Once the server comes back with a status, we remove the course locally and reset state
-        courseService.deleteCourse(courseToDelete._id)
+        return courseService.deleteCourse(courseToDelete._id)
             .then(status => {
                 this.setState((prevState) => {
                     // Define the next state based on the old state
@@ -60,7 +69,24 @@ class CourseManager extends React.Component {
                     return nextState
                 })
             })
+    }
 
+
+    updateCourse = (course) => {
+        courseService.updateCourse(course._id, course)
+            .then(status => this.setState((prevState) => ({
+                ...prevState,
+                // Grab all the existing courses except the update one
+                courses: prevState.courses.map(c => {
+                    if(c._id === course._id) {
+                        return course
+                    }
+                    else {
+                        return c
+                    }
+                })
+            })))
+    }
     // This render function is like calling main
     render() {
         return (
@@ -69,11 +95,13 @@ class CourseManager extends React.Component {
                 <Route path="/courses/table">
                     <CourseTable courses={this.state.courses}
                                  deleteCourse={this.deleteCourse}
+                                 updateCourse={this.updateCourse}
                                  addCourse={this.addCourse}/>
                 </Route>
                 <Route path="/courses/grid">
                     <CourseGrid courses={this.state.courses}
                                 deleteCourse={this.deleteCourse}
+                                updateCourse={this.updateCourse}
                                 addCourse={this.addCourse}/>
                 </Route>
                 {/*Use the data Route provides to recall the page called before the editor*/}

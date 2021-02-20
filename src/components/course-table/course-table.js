@@ -46,8 +46,9 @@ export default class CourseTable extends React.Component {
                         // Use map to dynamically create the course rows
                         this.props.courses.map((course, ndx) =>
                             <CourseRow
-                                // Give the row access to the delete function
+                                // Give the row access to the delete and update functions
                                 deleteCourse = {this.props.deleteCourse}
+                                updateCourse={this.props.updateCourse}
                                 // Pass the course to the row
                                 course = {course}
                                 // Give each row a unique identifier

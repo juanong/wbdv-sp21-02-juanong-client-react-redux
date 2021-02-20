@@ -15,7 +15,12 @@ export const createCourse = (course) =>
 
 export const findCourseById = (id) => {}
 
-export const updateCourse = (id, course) => {}
+export const updateCourse = (id, course) =>
+    fetch(`${COURSES_URL}/${id}`, {
+        method: 'PUT',
+        headers: {'content-type': 'application/json'},
+        body: JSON.stringify(course)})
+        .then(response => response.json())
 
 export const deleteCourse = (id) =>
     fetch(`${COURSES_URL}/${id}`, {method: 'DELETE'})

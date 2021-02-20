@@ -41,3 +41,7 @@ a {
 .jo-color-white {
     color: white;
 }
+
+.jo-background-gray {
+    background-color:lightgray;
+}

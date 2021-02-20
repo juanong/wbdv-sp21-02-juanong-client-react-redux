@@ -143,31 +143,31 @@ const CourseEditor = ({history}) =>
                 <div className="container">
                     <div className="row">
                         <div className="jo-topics-spacing">
-                            <div className="background-gray
+                            <div className="jo-background-gray
                                         jo-topics-format">
                                 <a href="#"><h5>Topic 1</h5></a>
                             </div>
                         </div>
                         <div className="jo-topics-spacing">
-                            <div className="background-gray
+                            <div className="jo-background-gray
                                         jo-topics-format">
                                 <a href="#"><h5>Topic 2</h5></a>
                             </div>
                         </div>
                         <div className="jo-topics-spacing">
-                            <div className="background-gray
+                            <div className="jo-background-gray
                                         jo-topics-format">
                                 <a href="#"><h5>Topic 3</h5></a>
                             </div>
                         </div>
                         <div className="jo-topics-spacing">
-                            <div className="background-gray
+                            <div className="jo-background-gray
                                         jo-topics-format">
                                 <a href="#"><h5>Topic 4</h5></a>
                             </div>
                         </div>
                         <div className="jo-topics-spacing">
-                            <div className="background-gray
+                            <div className="jo-background-gray
                                         jo-topics-plus-format">
                                 <a href="#"><h5><i className="fas fa-plus"></i></h5></a>
                             </div>

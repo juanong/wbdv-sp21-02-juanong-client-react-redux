@@ -11,3 +11,19 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.jo-color-red {
+  color: red;
+}
+
+.jo-color-green {
+  color: green;
+}
+
+.jo-color-blue {
+  color: dodgerblue;
+}
+
+.jo-basic-margins {
+  margin: 10px;
+}

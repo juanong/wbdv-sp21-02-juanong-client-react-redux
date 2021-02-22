@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
 import './course-card.style.client.css'
+import '../../index.css'
 
 // Important: parameters must be in curly brackets
 const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
@@ -43,7 +44,7 @@ const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
                 <p className="card-text">{course.description}</p>
                 <span>
                     <Link to='/courses/editor'>
-                        <a className="btn btn-primary btn-text">{title}</a>
+                        <a className="btn btn-primary btn-block btn-text">{title}</a>
                     </Link>
                 </span>
                 <br/>
@@ -54,7 +55,7 @@ const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
                 <br/>
                 <div className='text-right'>
                     {!editing && <i onClick={() => setEditing(true)}
-                                    className='fas fa-pencil-alt'></i>}
+                                    className='fas fa-edit jo-color-blue'></i>}
                 </div>
             </div>
             </div>

@@ -6,6 +6,7 @@ import CourseEditor from "./course-editor/course-editor";
 import {Route} from 'react-router-dom'
 import courseService from "../services/course-service";
 import Home from "./home";
+import "../index.css"
 
 // This class is responsible for rendering and managing all components of the course manager
 class CourseManager extends React.Component {
@@ -15,7 +16,7 @@ class CourseManager extends React.Component {
         courses: []
     }
 
-    // This React function resets the state
+    // Initialize the state courses array to contain everything in the server
     componentDidMount = () =>
         courseService.findAllCourses()
             .then(actualCourses => this.setState(
@@ -49,6 +50,7 @@ class CourseManager extends React.Component {
             })
     }
 
+    // Delete the specified course from the server and the local array
     deleteCourse = (courseToDelete) => {
         // Once the server comes back with a status, we remove the course locally and reset state
         return courseService.deleteCourse(courseToDelete._id)

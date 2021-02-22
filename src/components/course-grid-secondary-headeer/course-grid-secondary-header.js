@@ -22,7 +22,8 @@ const SecondaryHeader = () =>
                 </Link>
             </div>
         </div>
-
+        <br/>
+        <br/>
     </div>
 
 export default SecondaryHeader

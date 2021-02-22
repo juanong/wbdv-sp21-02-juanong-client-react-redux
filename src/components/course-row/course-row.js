@@ -2,6 +2,7 @@
 import React, {useState} from "react"
 import {Link} from "react-router-dom"
 import '../course-table/course-table.style.client.css'
+import '../../index.css'
 
 const CourseRow = ({deleteCourse, updateCourse, course, key, lastModified, title, owner}) => {
     // Set the initial editing state of the row by destructing the array that useState returns
@@ -37,17 +38,18 @@ const CourseRow = ({deleteCourse, updateCourse, course, key, lastModified, title
                 {
                     editing &&
                         <div>
-                            <i onClick={() => saveTitle()} className='fas fa-check jo-header-icon-padding'></i>
+                            <i onClick={() => saveTitle()}
+                               className='fas fa-check jo-header-icon-padding jo-color-green'></i>
                             <i onClick={() => {
                                 setEditing(false)
                                 return deleteCourse(course)}
-                            } className='fas fa-times jo-header-icon-padding'></i>
+                            } className='fas fa-times jo-header-icon-padding jo-color-red'></i>
                         </div>
                 }
                 {
                     !editing &&
                     <i onClick={() => setEditing(true)}
-                       className="fas fa-pencil-alt jo-header-icon-padding"></i>
+                       className="fas fa-edit jo-header-icon-padding jo-color-blue"></i>
                 }
             </td>
         </tr>)

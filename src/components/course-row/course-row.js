@@ -4,6 +4,7 @@ import {Link} from "react-router-dom"
 import '../course-table/course-table.style.client.css'
 import '../../index.css'
 
+// The course row element displays a course as a single row in the course table
 const CourseRow = ({deleteCourse, updateCourse, course, key, lastModified, title, owner}) => {
     // Set the initial editing state of the row by destructing the array that useState returns
     const [editing, setEditing] = useState(false)

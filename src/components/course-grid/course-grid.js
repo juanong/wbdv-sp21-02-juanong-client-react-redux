@@ -3,6 +3,7 @@ import CourseCard from "../course-card/course-card";
 import CourseHeader from "../course-header/course-header";
 import SecondaryHeader from "../course-grid-secondary-headeer/course-grid-secondary-header";
 
+// Displays all courses in the server as cards
 const CourseGrid = ({courses, deleteCourse, addCourse, updateCourse}) =>
     <div>
         <CourseHeader addCourse={addCourse}/>

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import './course-header.style.client.css'
 import courseService from "../../services/course-service";
 
+// The CourseHeader element allows us to add courses to the server
 const CourseHeader = ({addCourse}) => {
     const [newCourseTitle, setNewCourseTitle] = useState("")
     return (<div className='row jo-page-header-margins'>

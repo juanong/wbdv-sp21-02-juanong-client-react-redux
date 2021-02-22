@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import './course-card.style.client.css'
 import '../../index.css'
 
-// Important: parameters must be in curly brackets
+// The card element displays a single class in the course grid
 const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
 
     const [editing, setEditing] = useState(false)

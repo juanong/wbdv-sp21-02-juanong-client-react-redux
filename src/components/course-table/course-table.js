@@ -6,7 +6,7 @@ import CourseHeader from "../course-header/course-header";
 import './course-table.style.client.css';
 
 
-// Implement the course table component using a class
+// This class represents the course-table component, which displays all courses in the server as a single table
 export default class CourseTable extends React.Component {
 
     // Use the constructor and super class to inherit the courses array through props

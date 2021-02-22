@@ -13,7 +13,12 @@ export const createCourse = (course) =>
         headers: {'content-type': 'application/json'}})
         .then(response => response.json())
 
-export const findCourseById = (id) => {}
+export const findCourseById = (id) => {
+    fetch(COURSES_URL).then(response => {
+        let courses = response.json()
+        return courses.find(course => course._id === id)
+    })
+}
 
 export const updateCourse = (id, course) =>
     fetch(`${COURSES_URL}/${id}`, {

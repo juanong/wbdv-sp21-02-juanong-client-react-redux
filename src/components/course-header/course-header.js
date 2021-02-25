@@ -29,6 +29,16 @@ const CourseHeader = ({addCourse}) => {
             }}
                className='fas fa-plus-circle fa-2x jo-red-plus'></i>
         </div>
+        <i onClick={() => {
+            if (newCourseTitle !== "") {
+                addCourse(newCourseTitle)
+                setNewCourseTitle("")
+            }
+            else {
+                addCourse("New Course")
+            }
+        }}
+           className='fas fa-plus-circle fa-3x jo-red-plus jo-floating'></i>
     </div>)
 }
 

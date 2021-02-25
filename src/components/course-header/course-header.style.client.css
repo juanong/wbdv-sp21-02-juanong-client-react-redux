@@ -5,3 +5,11 @@
 .jo-red-plus {
     color: red;
 }
+
+.jo-floating {
+    position:fixed;
+    width:40px;
+    height:40px;
+    bottom:60px;
+    right:60px;
+}

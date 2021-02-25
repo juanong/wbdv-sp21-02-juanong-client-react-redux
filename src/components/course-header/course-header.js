@@ -38,7 +38,7 @@ const CourseHeader = ({addCourse}) => {
                 addCourse("New Course")
             }
         }}
-           className='fas fa-plus-circle fa-3x jo-red-plus jo-floating'></i>
+           className='fas fa-plus-circle fa-3x jo-red-plus jo-floating float-right'></i>
     </div>)
 }
 

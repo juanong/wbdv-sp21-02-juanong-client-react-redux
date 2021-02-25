@@ -12,4 +12,5 @@
     height:40px;
     bottom:60px;
     right:60px;
+    z-index: 2;
 }

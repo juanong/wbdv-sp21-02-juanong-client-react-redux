@@ -24,7 +24,8 @@ const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
             <div className="card-body card-block">
                 {
                     editing && <div className='text-right'>
-                        <i onClick={() => saveTitle()} className='fas fa-check jo-color-green'></i>
+                        <i onClick={() => saveTitle()}
+                           className='fas fa-check jo-color-green'></i>
                         <i onClick={() => {
                             setEditing(false)
                             return deleteCourse(course)}
@@ -54,8 +55,13 @@ const CourseCard = ({deleteCourse, updateCourse, course, title, key}) => {
                 <br/>
                 <br/>
                 <div className='text-right'>
-                    {!editing && <i onClick={() => setEditing(true)}
-                                    className='fas fa-edit jo-color-blue'></i>}
+                    {
+                        !editing &&
+                        <i onClick={() => {
+                            setNewTitle(course.title)
+                            setEditing(true)}
+                        }
+                           className='fas fa-edit jo-color-blue'></i>}
                 </div>
             </div>
             </div>

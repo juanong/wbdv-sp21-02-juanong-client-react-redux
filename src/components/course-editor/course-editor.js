@@ -18,7 +18,6 @@ const CourseEditor = ({history}) =>
                     </li>
                 </ul>
             </div>
-
             <div className="col-sm-8 ">
                 <ul className="nav nav-pills nav-fill">
                     <li className="nav-item">
@@ -139,6 +138,7 @@ const CourseEditor = ({history}) =>
                     <br/>
                 </div>
             </div>
+
             <div className="col-sm-8">
                 <div className="container">
                     <div className="row">

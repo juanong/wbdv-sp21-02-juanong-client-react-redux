@@ -17,7 +17,7 @@ const SecondaryHeader = () =>
             <div className='text-nowrap text-right'>
                 <i className="fas fa-folder fa-2x jo-header-icon-padding"></i>
                 <i className="fas fa-sort-alpha-up fa-2x jo-header-icon-padding"></i>
-                <Link to="/courses/table">
+                <Link to="/courses/display/table">
                     <i className="fas fa-th fa-2x jo-header-icon-padding"></i>
                 </Link>
             </div>

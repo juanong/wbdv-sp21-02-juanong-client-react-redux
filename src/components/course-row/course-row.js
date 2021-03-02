@@ -19,10 +19,12 @@ const CourseRow = ({deleteCourse, updateCourse, course, key, lastModified, title
         updateCourse(newCourse)
     }
 
-    return (<tr>
+    // The link of each row will have the course ID
+    return (
+        <tr>
             <td>
                 {!editing &&
-                <Link to="/courses/editor">
+                <Link to={`/courses/table/edit/${course._id}`}>
                     {title}
                 </Link>
                 }

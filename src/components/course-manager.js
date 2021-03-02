@@ -88,20 +88,23 @@ class CourseManager extends React.Component {
                     <Home/>
                 </Route>
                 {/* Pass the courses array and the functions down to the child components */}
-                <Route path="/courses/table">
+                <Route path="/courses/display/table">
                     <CourseTable courses={this.state.courses}
                                  deleteCourse={this.deleteCourse}
                                  updateCourse={this.updateCourse}
                                  addCourse={this.addCourse}/>
                 </Route>
-                <Route path="/courses/grid">
+                <Route path="/courses/display/grid">
                     <CourseGrid courses={this.state.courses}
                                 deleteCourse={this.deleteCourse}
                                 updateCourse={this.updateCourse}
                                 addCourse={this.addCourse}/>
                 </Route>
-                {/*Use the data Route provides to recall the page called before the editor*/}
-                <Route path="/courses/editor"
+                {/*Implement path variables in our URL to the editor (layout and editor)*/}
+                <Route path={[
+                    "/courses/:layout/edit/:courseId/",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId",
+                    "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId"]}
                        render={(props) => <CourseEditor history={props.history}/>}>
                 </Route>
             </div>

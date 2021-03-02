@@ -34,7 +34,7 @@ export default class CourseTable extends React.Component {
                             <div className="text-nowrap float-right">
                                 <i className="fas fa-folder fa-2x jo-header-icon-padding"></i>
                                 <i className="fas fa-sort-alpha-up fa-2x jo-header-icon-padding"></i>
-                                <Link to="/courses/grid">
+                                <Link to="/courses/display/grid">
                                     <i className="fas fa-th fa-2x jo-header-icon-padding"></i>
                                 </Link>
                             </div>

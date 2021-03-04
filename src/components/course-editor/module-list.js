@@ -18,6 +18,7 @@ const ModuleList = (
     const {layout, courseId} = useParams()
 
     // Whatever function we put in useEffect is executed when the module list loads
+    // Put in the second argument to stop making infinite requests from the server
     useEffect(() => {
         // Fetch the data and pass to the module reducer
         findModulesForCourse(courseId)
@@ -42,7 +43,7 @@ const ModuleList = (
                 </div>
             )}
             <div className="jo-color-white jo-left-panel-padding">
-                <i onClick={createModule} className="fas fa-plus float-right fa-lg"></i>
+                <i onClick={() => createModule(courseId)} className="fas fa-plus float-right fa-lg"></i>
                 <br/>
                 <br/>
             </div>
@@ -59,16 +60,29 @@ const stpm = (state) => {
 // a prop in ModuleList
 const dtpm = (dispatch) => {
     return {
-        createModule: () => dispatch({type: "CREATE_MODULE"}),
+        createModule: (courseId) => {
+            moduleService.createModule(courseId, {title: "New Module"})
+                .then(actualModule => dispatch({
+                    type: "CREATE_MODULE",
+                    newModule: actualModule
+                }))
+        },
         // Pass both the type and the item we want to delete
-        deleteModule: (item) => dispatch({
-            type: "DELETE_MODULE",
-            moduleToDelete: item
-        }),
-        updateModule: (item) => dispatch({
-            type: "UPDATE_MODULE",
-            moduleToUpdate: item
-        }),
+        deleteModule: (module) => {
+            moduleService.deleteModule(module._id)
+                .then(moduleToDelete => dispatch({
+                    type: "DELETE_MODULE",
+                    moduleToDelete: module
+                }))
+        },
+        // Call the server to update a specific module
+        updateModule: (module) => {
+            moduleService.updateModule(module._id, module)
+                .then(updatedModule => dispatch({
+                    type: "UPDATE_MODULE",
+                    updatedModule: module
+                }))
+        },
         // Fetch modules from server using our service and notify the reducer
         findModulesForCourse: (courseId) => {
             moduleService.findModulesForCourse(courseId)

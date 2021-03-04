@@ -23,6 +23,10 @@ const store = createStore(reducer)
 const CourseEditor = ({history}) => {
     // Parse the courseID URL parameters
     const {courseId} = useParams()
+
+    // Use the courseID to find the course title
+    //const courseTitle = courses.find(course => course._id === courseId)
+
     return (
         <Provider store={store}>
             <div>
@@ -37,7 +41,7 @@ const CourseEditor = ({history}) => {
                             </li>
                             <li className="list-inline-item
                                jo-color-white">
-                                <h5>Get Course By ID {courseId}</h5>
+                                <h5>Course Title</h5>
                             </li>
                         </ul>
                     </div>

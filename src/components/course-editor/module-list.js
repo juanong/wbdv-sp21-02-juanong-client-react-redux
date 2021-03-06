@@ -15,31 +15,32 @@ const ModuleList = (
     }
     ) => {
     // Grab the URL parameters
-    const {layout, courseId} = useParams()
+    const {layout, courseId, moduleId} = useParams()
 
     // Whatever function we put in useEffect is executed when the module list loads
     // Put in the second argument to stop making infinite requests from the server
     useEffect(() => {
         // Fetch the data and pass to the module reducer
-        findModulesForCourse(courseId)
+        if (courseId !== "undefined" && typeof courseId !== "undefined") {
+            findModulesForCourse(courseId)
+        }
     }, [])
 
     return (
         <>
             <br/>
             {myModules.map(module =>
-                <div className="jo-left-panel-padding">
-                    <div className="container text-center">
-                        <a className="btn btn-secondary
-                                          btn-block
-                                          jo-left-panel-padding" href="#">
+                <div className="container text-center jo-left-panel-padding">
+                    <button className={`btn btn-secondary btn-block jo-left-panel-padding 
+                    ${module._id === moduleId ? 'active' : ''}`}>
+                        <h6>
                             <EditableItem
                                 to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
                                 updateItem={updateModule}
                                 deleteItem={deleteModule}
                                 item={module}/>
-                        </a>
-                    </div>
+                        </h6>
+                    </button>
                 </div>
             )}
             <div className="jo-color-white jo-left-panel-padding">

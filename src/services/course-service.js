@@ -14,10 +14,11 @@ export const createCourse = (course) =>
         .then(response => response.json())
 
 export const findCourseById = (id) => {
-    fetch(COURSES_URL).then(response => {
-        let courses = response.json()
-        return courses.find(course => course._id === id)
-    })
+    fetch(COURSES_URL).then({
+        //let courses = response.json()
+        //return courses.find(course => course._id === id)
+        }
+    )
 }
 
 export const updateCourse = (id, course) =>

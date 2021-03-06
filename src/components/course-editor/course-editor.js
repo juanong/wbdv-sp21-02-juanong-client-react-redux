@@ -9,6 +9,7 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
+import courseService from "../../services/course-service"
 
 // Combine our reducers into a super reducer
 const reducer = combineReducers({
@@ -20,9 +21,11 @@ const reducer = combineReducers({
 // Create a store from the super reducer
 const store = createStore(reducer)
 
-const CourseEditor = ({history}) => {
+const CourseEditor = ({courses}) => {
     // Parse the courseID URL parameters
-    const {courseId} = useParams()
+    const {layout, courseId} = useParams()
+
+    //const currCourse = (courses.find(course => course._id === courseId)).title
 
     // Use the courseID to find the course title
     //const courseTitle = courses.find(course => course._id === courseId)
@@ -36,12 +39,14 @@ const CourseEditor = ({history}) => {
                             <li className="list-inline-item
                                jo-x-right-padding
                                jo-color-light-gray">
-                                {/* Use the Route information to navigate to the most recently viewed page */}
-                                <i onClick={() => history.goBack()} className="fas fa-arrow-left"></i>
+                                {/* Use layout param to navigate to previous course display */}
+                                <Link to={`/courses/display/${layout}`}>
+                                    <i className="fas fa-arrow-left"></i>
+                                </Link>
                             </li>
                             <li className="list-inline-item
                                jo-color-white">
-                                <h5>Course Title</h5>
+                                <h5>{courseId}</h5>
                             </li>
                         </ul>
                     </div>

@@ -1,16 +1,21 @@
 const initialState = {
-    topics: [
-        {_id: 987, title: "Topic 1"},
-        {_id: 876, title: "Topic 2"},
-        {_id: 765, title: "Topic 3"},
-        {_id: 654, title: "Topic 4"},
-    ]
+    topics: []
 }
 
 const topicReducer = (state = initialState, action) => {
     switch (action.type) {
         case "CREATE_TOPIC":
+            return {
+                topics: [
+                    ...state.topics,
+                    action.newTopic
+                ]
+            }
         case "FIND_TOPICS_FOR_LESSON":
+            return {
+                ...state,
+                topics: action.topics
+            }
         case "FIND_TOPIC":
         case "UPDATE_TOPIC":
             const newStateUpdated = {
@@ -24,11 +29,17 @@ const topicReducer = (state = initialState, action) => {
                 })
             }
             return newStateUpdated
+
         case "DELETE_TOPIC":
-            const newStateDeleted = {
+            return {
                 topics: state.topics.filter(topic => topic._id !== action.topicToDelete._id)
             }
-            return newStateDeleted
+
+        case "CLEAR_TOPICS":
+            return {
+                ...state,
+                topics: []
+            }
         default:
             return state
     }

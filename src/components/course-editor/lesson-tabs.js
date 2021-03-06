@@ -10,18 +10,22 @@ const LessonTabs = (
         deleteLesson = () => alert("Error deleting lesson"),
         updateLesson = () => alert("Unable to update lesson"),
         findLessonsForModule = () => alert("Unable to load lessons"),
-        createLesson = () => alert("Unable to create lesson")
+        createLesson = () => alert("Unable to create lesson"),
+        clearLessons
     }) => {
 
-    const {layout, courseId, moduleId} = useParams();
+    const {layout, courseId, moduleId, lessonId} = useParams();
 
     // The lesson tabs need to be notified of a module change
 
     useEffect(() => {
-        findLessonsForModule(moduleId)
-    }, [moduleId])
-
-
+        if (moduleId !== "undefined" && typeof moduleId !== "undefined") {
+            findLessonsForModule(moduleId)
+        }
+        else {
+            clearLessons()
+        }
+    }, [moduleId, courseId])
 
     return (
         <div>
@@ -29,7 +33,7 @@ const LessonTabs = (
                 {
                     lessons.map(lesson =>
                         <li className='nav-item jo-tab-spacing'>
-                            <a className='nav-link'>
+                            <a className={`nav-link ${lesson._id === lessonId ? 'active': ''}`}>
                                 <h5>
                                 <EditableItem
                                     to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lesson._id}`}
@@ -41,9 +45,15 @@ const LessonTabs = (
                         </li>
                     )
                 }
-                <li className='nav-item jo-tab-spacing'>
-                    <i onClick={() => createLesson(moduleId)} className='fas fa-plus'></i>
-                </li>
+                {/* Only give the option to create a new lesson if there is a module selected */}
+                {moduleId !== "undefined" && typeof moduleId !== "undefined" &&
+                    <li className='nav-item jo-tab-spacing'>
+                        <i onClick={
+                            () => createLesson(moduleId)
+                        }
+                           className='fas fa-plus'></i>
+                    </li>
+                }
             </ul>
         </div>
     )
@@ -74,11 +84,11 @@ const dtpm = (dispatch) => {
                 }))
         },
 
-        deleteLesson: (module) => {
-            lessonService.deleteLesson(module._id)
+        deleteLesson: (lesson) => {
+            lessonService.deleteLesson(lesson._id)
                 .then(lessonToDelete => dispatch({
                     type: "DELETE_LESSON",
-                    lessonToDelete: module
+                    lessonToDelete: lesson
                 }))
         },
 
@@ -86,9 +96,14 @@ const dtpm = (dispatch) => {
             lessonService.updateLesson(lesson._id, lesson)
                 .then(updatedLesson => dispatch({
                     type: "UPDATE_LESSON",
-                    updatedLesson: lesson
+                    lesson
                 }))
-        }
+        },
+
+        clearLessons: () =>
+            dispatch({
+                type: "CLEAR_LESSONS"
+            })
     }
 }
 

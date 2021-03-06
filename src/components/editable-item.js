@@ -18,12 +18,15 @@ const EditableItem = (
     return (
         <>
             {!editing &&
-                <>
+                <div className='text-truncate'>
                     <Link to={to}>
                         {item.title}
                     </Link>
-                    <i onClick={() => setEditing(true)} className='fas fa-edit float-right'></i>
-                </>
+                    <i onClick={() => {
+                        setCachedItem(item)
+                        setEditing(true)}}
+                       className='fas fa-edit float-right'></i>
+                </div>
             }
             {editing &&
                 <>
@@ -40,6 +43,7 @@ const EditableItem = (
                     <i onClick={() => {
                         setEditing(false)
                         updateItem(cachedItem)
+                        console.log(cachedItem)
                     }} className='fas fa-check'></i>
                     <i onClick={() => {
                         setEditing(false)

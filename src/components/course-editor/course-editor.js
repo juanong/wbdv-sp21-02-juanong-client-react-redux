@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
 import './course-editor.style.client.css'
+import courseService from "../../services/course-service"
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
@@ -9,7 +10,6 @@ import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
-import courseService from "../../services/course-service"
 
 // Combine our reducers into a super reducer
 const reducer = combineReducers({
@@ -21,14 +21,21 @@ const reducer = combineReducers({
 // Create a store from the super reducer
 const store = createStore(reducer)
 
-const CourseEditor = ({courses}) => {
+const CourseEditor = () => {
     // Parse the courseID URL parameters
     const {layout, courseId} = useParams()
 
-    //const currCourse = (courses.find(course => course._id === courseId)).title
+    // Use the courseId and a hook to find the course title
+    const [courseTitle, setCourseTitle] = useState("")
 
-    // Use the courseID to find the course title
-    //const courseTitle = courses.find(course => course._id === courseId)
+    // Just try console logging the course by using findCoursebyId
+    const findCourseById = (id) => {
+        courseService.findCourseById(id)
+            .then(foundCourse => setCourseTitle(foundCourse.title))
+        console.log(courseTitle)
+    }
+
+    useEffect(() => findCourseById(courseId))
 
     return (
         <Provider store={store}>
@@ -46,7 +53,7 @@ const CourseEditor = ({courses}) => {
                             </li>
                             <li className="list-inline-item
                                jo-color-white">
-                                <h5>{courseId}</h5>
+                                <h5>{courseTitle}</h5>
                             </li>
                         </ul>
                     </div>
@@ -57,11 +64,8 @@ const CourseEditor = ({courses}) => {
                         <ModuleList/>
                     </div>
                     <div className="col-sm-8">
-
                         <LessonTabs/>
-
                         <TopicPills/>
-
                     </div>
                 </div>
             </div>

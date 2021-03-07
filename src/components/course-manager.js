@@ -80,6 +80,7 @@ class CourseManager extends React.Component {
                 })
             })))
     }
+
     // This render function is like calling main
     render() {
         return (
@@ -105,7 +106,7 @@ class CourseManager extends React.Component {
                     "/courses/:layout/edit/:courseId/",
                     "/courses/:layout/edit/:courseId/modules/:moduleId",
                     "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId"]} exact={true}>
-                    <CourseEditor courses={this.state.courses}/>
+                    <CourseEditor/>
                 </Route>
             </div>
         )

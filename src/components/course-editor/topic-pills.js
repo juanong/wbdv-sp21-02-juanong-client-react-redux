@@ -35,6 +35,7 @@ const TopicPills = (
                             <li className='nav-item jo-topic-pill jo-background-gray rounded'>
                                 <h5 className='nav-link'>
                                     <EditableItem
+                                        to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}`}
                                         updateItem={updateTopic}
                                         deleteItem={deleteTopic}
                                         item={topic}/>

@@ -5,17 +5,20 @@ import courseService from "../../services/course-service"
 import moduleReducer from "../../reducers/module-reducer";
 import lessonReducer from "../../reducers/lesson-reducer";
 import topicReducer from "../../reducers/topic-reducer";
+import widgetReducer from "../../reducers/widget-reducer";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleList from "./module-list";
 import LessonTabs from "./lesson-tabs";
 import TopicPills from "./topic-pills";
+import WidgetList from "../widgets/widget-list";
 
 // Combine our reducers into a super reducer
 const reducer = combineReducers({
     moduleReducer: moduleReducer,
     lessonReducer: lessonReducer,
-    topicReducer: topicReducer
+    topicReducer: topicReducer,
+    widgetReducer: widgetReducer
 })
 
 // Create a store from the super reducer
@@ -32,7 +35,6 @@ const CourseEditor = () => {
     const findCourseById = (id) => {
         courseService.findCourseById(id)
             .then(foundCourse => setCourseTitle(foundCourse.title))
-        console.log(courseTitle)
     }
 
     useEffect(() => findCourseById(courseId))
@@ -66,6 +68,7 @@ const CourseEditor = () => {
                     <div className="col-sm-8">
                         <LessonTabs/>
                         <TopicPills/>
+                        <WidgetList/>
                     </div>
                 </div>
             </div>

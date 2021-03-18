@@ -30,7 +30,6 @@ const WidgetList = (
 
     return (
         <div>
-            <h3>Current widget: {editingWidget.id}</h3>
             <ul className="list-group jo-widget-list">
                 {
                     myWidgets.map(widget =>
@@ -39,7 +38,7 @@ const WidgetList = (
                                 editingWidget.id === widget.id &&
                                     <>
                                         <i onClick={() => {
-                                            updateWidget()
+                                            updateWidget(editingWidget.id, editingWidget)
                                             setEditingWidget({})
                                         }
                                         } className="fas fa-check float-right">
@@ -55,20 +54,24 @@ const WidgetList = (
                             {
                                 editingWidget.id !== widget.id &&
                                     <>
-                                        <i onClick={() => setEditingWidget(widget)} className="fas fa-cog float-right"></i>
+                                        <i onClick={() => setEditingWidget(widget)}
+                                           className="fas fa-cog float-right"></i>
                                     </>
                             }
+                            {console.log(editingWidget.id === widget.id)}
                             {
                                 widget.type === "HEADING" &&
                                 <HeadingWidget
+                                    setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}
-                                    widget={widget}/>
+                                    widget={editingWidget.id === widget.id ? editingWidget : widget}/>
                             }
                             {
                                 widget.type === "PARAGRAPH" &&
                                 <ParagraphWidget
+                                    setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}
-                                    widget={widget}/>
+                                    widget={editingWidget.id === widget.id ? editingWidget : widget}/>
                             }
                         </li>)
                 }
@@ -104,7 +107,7 @@ const dtpm = (dispatch) => {
 
         createWidgetForTopic: (tid) => {
             widgetService.createWidgetForTopic(tid,
-                {type: "HEADING", size: 1, text: "New Widget"})
+                {type: "PARAGRAPH", size: 2, text: "New Widget"})
                 .then(newWidget => dispatch({
                     type: "CREATE_WIDGET",
                     newWidget
@@ -116,6 +119,14 @@ const dtpm = (dispatch) => {
                 .then(response => dispatch({
                     type: "DELETE_WIDGET",
                     deletedWidget: widget
+                }))
+        },
+
+        updateWidget: (wid, widget) => {
+            widgetService.updateWidget(wid, widget)
+                .then(updatedWidget => dispatch({
+                    type: "UPDATE_WIDGET",
+                    updatedWidget: widget
                 }))
         }
     }

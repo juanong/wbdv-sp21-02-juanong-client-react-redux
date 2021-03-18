@@ -1,12 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-const ParagraphWidget = ({widget, editing}) => {
+const ParagraphWidget = ({widget, editing, setWidget}) => {
     return (
         <div>
             {
                 editing &&
                 <>
-                    <textarea value={widget.text} className="form-control"></textarea>
+                    <textarea onChange={(e) => setWidget({...widget, text: e.target.value})} value={widget.text}
+                              className="form-control"></textarea>
                 </>
             }
             {

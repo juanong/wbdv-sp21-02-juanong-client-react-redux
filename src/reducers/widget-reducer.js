@@ -25,6 +25,16 @@ const widgetReducer = (state = initialState, action) => {
             return {
                 widgets: state.widgets.filter(item => item.id !== action.deletedWidget.id)
             }
+        case "UPDATE_WIDGET":
+            return {
+                widgets: state.widgets.map(widget => {
+                    if (widget.id === action.updatedWidget.id) {
+                        return action.updatedWidget
+                    } else {
+                        return widget
+                    }
+                })
+            }
         default:
             return state
     }

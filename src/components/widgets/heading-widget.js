@@ -1,23 +1,19 @@
-import React, {useState} from 'react'
+import React from 'react'
 
-const HeadingWidget = ({widget, editing}) => {
-
-    const [cachedWidget, setCachedWidget] = useState(widget)
+const HeadingWidget = ({widget, editing, setWidget}) => {
 
     return (
         <div>
             {
                 editing &&
                 <>
-                    <input onChange={e =>
-                        setCachedWidget({
-                            ...cachedWidget,
-                            text: e.target.value
-                        })}
-                           value={cachedWidget.text}
+                    <input onChange={e => setWidget({...widget, text: e.target.value})}
+                           value={widget.text}
                            className="form-control"
                         />
-                    <select value={widget.size} className="form-control">
+                    <select onChange={e => setWidget({...widget, size: parseInt(e.target.value)})}
+                            value={widget.size}
+                            className="form-control">
                         <option value={1}>Heading 1</option>
                         <option value={2}>Heading 2</option>
                         <option value={3}>Heading 3</option>
@@ -30,12 +26,12 @@ const HeadingWidget = ({widget, editing}) => {
             {
                 !editing &&
                 <>
-                    {widget.size === 1 && <h1>{cachedWidget.text}</h1>}
-                    {widget.size === 2 && <h2>{cachedWidget.text}</h2>}
-                    {widget.size === 3 && <h3>{cachedWidget.text}</h3>}
-                    {widget.size === 4 && <h4>{cachedWidget.text}</h4>}
-                    {widget.size === 5 && <h5>{cachedWidget.text}</h5>}
-                    {widget.size === 6 && <h6>{cachedWidget.text}</h6>}
+                    {widget.size === 1 && <h1>{widget.text}</h1>}
+                    {widget.size === 2 && <h2>{widget.text}</h2>}
+                    {widget.size === 3 && <h3>{widget.text}</h3>}
+                    {widget.size === 4 && <h4>{widget.text}</h4>}
+                    {widget.size === 5 && <h5>{widget.text}</h5>}
+                    {widget.size === 6 && <h6>{widget.text}</h6>}
                 </>
             }
         </div>

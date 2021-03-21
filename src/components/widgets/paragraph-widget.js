@@ -6,13 +6,13 @@ const ParagraphWidget = ({widget, editing, setWidget}) => {
             {
                 editing &&
                 <>
-                    <select onChange={(e) => setWidget({...widget, type: e.target.value})}
-                            value={widget.type} className='form-control'>
+                    <select onChange={(e) => setWidget({...widget, type: e.target.value, size: 1})}
+                            value={widget.type} className='form-control jo-editing-widgets'>
                         <option value="PARAGRAPH">Paragraph</option>
                         <option value="HEADING">Heading</option>
                     </select>
                     <textarea onChange={(e) => setWidget({...widget, text: e.target.value})} value={widget.text}
-                              className="form-control"></textarea>
+                              className="form-control jo-editing-widgets"></textarea>
                 </>
             }
             {

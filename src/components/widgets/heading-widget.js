@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../index.css'
 
 const HeadingWidget = ({widget, editing, setWidget}) => {
 
@@ -8,18 +9,18 @@ const HeadingWidget = ({widget, editing, setWidget}) => {
                 editing &&
                 <>
                     <select onChange={(e) => setWidget({...widget, type: e.target.value, size: 1})}
-                            className="form-control"
+                            className="form-control jo-editing-widgets"
                             value={widget.type}>
                         <option value="PARAGRAPH">Paragraph</option>
                         <option value="HEADING">Heading</option>
                     </select>
                     <input onChange={e => setWidget({...widget, text: e.target.value})}
                            value={widget.text}
-                           className="form-control"
+                           className="form-control jo-editing-widgets"
                         />
                     <select onChange={e => setWidget({...widget, size: parseInt(e.target.value)})}
                             value={widget.size}
-                            className="form-control">
+                            className="form-control jo-editing-widgets">
                         <option value={1}>Heading 1</option>
                         <option value={2}>Heading 2</option>
                         <option value={3}>Heading 3</option>

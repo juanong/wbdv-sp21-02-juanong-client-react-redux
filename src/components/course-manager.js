@@ -3,7 +3,7 @@ import CourseTable from "./course-table/course-table";
 import CourseGrid from "./course-grid/course-grid";
 import CourseEditor from "./course-editor/course-editor";
 // Don't forget the curly brackets
-import {Route} from 'react-router-dom'
+import {Route, Redirect} from 'react-router-dom'
 import courseService from "../services/course-service";
 import Home from "./home";
 import "../index.css"
@@ -85,6 +85,7 @@ class CourseManager extends React.Component {
     render() {
         return (
             <div>
+                <Redirect from="/" to="/home"/>
                 <Route path="/home">
                     <Home/>
                 </Route>

@@ -107,7 +107,7 @@ const dtpm = (dispatch) => {
 
         createWidgetForTopic: (tid) => {
             widgetService.createWidgetForTopic(tid,
-                {type: "PARAGRAPH", size: 2, text: "New Widget"})
+                {type: "HEADING", size: 1, text: "New Widget"})
                 .then(newWidget => dispatch({
                     type: "CREATE_WIDGET",
                     newWidget

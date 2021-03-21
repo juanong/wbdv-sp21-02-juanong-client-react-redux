@@ -1,16 +1,18 @@
 // This widget service will communicate with our created java server
 
+const WIDGET_URL = process.env.REACT_APP_WIDGET_URL
+
 export const findWidgetsForTopic = (tid) =>
-    fetch(`http://localhost:8080/api/topics/${tid}/widgets`)
+    fetch(`${WIDGET_URL}/topics/${tid}/widgets`)
         .then(widgets => widgets.json())
 
 
 export const findAllWidgets = () =>
-    fetch("http://localhost:8080/api/widgets")
+    fetch(`${WIDGET_URL}/widgets`)
         .then(widgets => widgets.json())
 
 export const createWidgetForTopic = (tid, widget) =>
-    fetch(`http://localhost:8080/api/topics/${tid}/widgets`, {
+    fetch(`${WIDGET_URL}/topics/${tid}/widgets`, {
         method: "POST",
         body: JSON.stringify(widget),
         headers: {
@@ -19,12 +21,12 @@ export const createWidgetForTopic = (tid, widget) =>
     }).then(actualWidget => actualWidget.json())
 
 export const deleteWidget = (wid) =>
-    fetch(`http://localhost:8080/api/widgets/${wid}`, {
+    fetch(`${WIDGET_URL}/widgets/${wid}`, {
         method: "DELETE"
     }).then(widget => widget.json())
 
 export const updateWidget = (wid, widget) =>
-    fetch(`http://localhost:8080/api/widgets/${wid}`, {
+    fetch(`${WIDGET_URL}/widgets/${wid}`, {
         method: "PUT",
         body: JSON.stringify(widget),
         headers: {

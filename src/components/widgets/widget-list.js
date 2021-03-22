@@ -76,7 +76,9 @@ const WidgetList = (
                         </li>)
                 }
             </ul>
-            <i onClick={() => createWidgetForTopic(topicId)} className="fas fa-plus float-right"></i>
+            {topicId !== "undefined" && typeof topicId !== "undefined" &&
+                <i onClick={() => createWidgetForTopic(topicId)} className="fas fa-plus float-right"></i>
+            }
         </div>
     )
 }

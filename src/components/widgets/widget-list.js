@@ -6,6 +6,8 @@ import widgetService from "../../services/widget-service"
 import HeadingWidget from "./heading-widget";
 import ParagraphWidget from "./paragraph-widget";
 import './widgets.style.client.css';
+import ListWidget from "./list-widget";
+import ImageWidget from "./image-widget";
 
 const WidgetList = (
     {
@@ -58,7 +60,6 @@ const WidgetList = (
                                            className="fas fa-cog float-right"></i>
                                     </>
                             }
-                            {console.log(editingWidget.id === widget.id)}
                             {
                                 widget.type === "HEADING" &&
                                 <HeadingWidget
@@ -69,6 +70,20 @@ const WidgetList = (
                             {
                                 widget.type === "PARAGRAPH" &&
                                 <ParagraphWidget
+                                    setWidget={setEditingWidget}
+                                    editing = {editingWidget.id === widget.id}
+                                    widget={editingWidget.id === widget.id ? editingWidget : widget}/>
+                            }
+                            {
+                                widget.type === "LIST" &&
+                                <ListWidget
+                                    setWidget={setEditingWidget}
+                                    editing = {editingWidget.id === widget.id}
+                                    widget={editingWidget.id === widget.id ? editingWidget : widget}/>
+                            }
+                            {
+                                widget.type === "IMAGE" &&
+                                <ImageWidget
                                     setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}
                                     widget={editingWidget.id === widget.id ? editingWidget : widget}/>
@@ -109,7 +124,7 @@ const dtpm = (dispatch) => {
 
         createWidgetForTopic: (tid) => {
             widgetService.createWidgetForTopic(tid,
-                {type: "HEADING", size: 1, text: "New Widget"})
+                {type: "HEADING", size: 1, text: "New Widget", ordered: false})
                 .then(newWidget => dispatch({
                     type: "CREATE_WIDGET",
                     newWidget

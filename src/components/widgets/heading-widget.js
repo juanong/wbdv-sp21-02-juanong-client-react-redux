@@ -2,7 +2,6 @@ import React from 'react'
 import '../../index.css'
 
 const HeadingWidget = ({widget, editing, setWidget}) => {
-
     return (
         <div>
             {
@@ -13,6 +12,8 @@ const HeadingWidget = ({widget, editing, setWidget}) => {
                             value={widget.type}>
                         <option value="PARAGRAPH">Paragraph</option>
                         <option value="HEADING">Heading</option>
+                        <option value="LIST">List</option>
+                        <option value="IMAGE">Image</option>
                     </select>
                     <input onChange={e => setWidget({...widget, text: e.target.value})}
                            value={widget.text}

@@ -14,7 +14,7 @@ const TopicPills = (
         clearTopics
     }) => {
 
-    const {layout, courseId, moduleId, lessonId} = useParams();
+    const {layout, courseId, moduleId, lessonId, topicId} = useParams();
 
     useEffect(() => {
         if (lessonId !== "undefined" && typeof lessonId !== "undefined"
@@ -32,7 +32,8 @@ const TopicPills = (
                 <ul className='nav nav-pills nav-fill'>
                     {
                         topics.map(topic =>
-                            <li className='nav-item jo-topic-pill jo-background-gray rounded'>
+                            <li className={`nav-item jo-topic-pill jo-background-gray rounded ${topic._id === topicId ? 'jo-pill-active' : 
+                            ''}`}>
                                 <h5 className='nav-link'>
                                     <EditableItem
                                         to={`/courses/${layout}/edit/${courseId}/modules/${moduleId}/lessons/${lessonId}/topics/${topic._id}`}

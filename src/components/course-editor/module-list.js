@@ -27,12 +27,12 @@ const ModuleList = (
     }, [])
 
     return (
-        <>
+        <div className="jo-module-list-height">
             <br/>
             {myModules.map(module =>
                 <div className="container text-center jo-left-panel-padding">
-                    <button className={`btn btn-secondary btn-block jo-left-panel-padding 
-                    ${module._id === moduleId ? 'active' : ''}`}>
+                    <div className={`jo-left-panel-padding jo-fake-button
+                    ${module._id === moduleId ? 'jo-fake-button-active' : ''}`}>
                         <h6>
                             <EditableItem
                                 to={`/courses/${layout}/edit/${courseId}/modules/${module._id}`}
@@ -40,7 +40,7 @@ const ModuleList = (
                                 deleteItem={deleteModule}
                                 item={module}/>
                         </h6>
-                    </button>
+                    </div>
                 </div>
             )}
             <div className="jo-color-white jo-left-panel-padding">
@@ -48,7 +48,7 @@ const ModuleList = (
                 <br/>
                 <br/>
             </div>
-        </>)
+        </div>)
 }
 
 const stpm = (state) => {

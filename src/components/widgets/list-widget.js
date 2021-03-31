@@ -6,7 +6,15 @@ const ListWidget = ({widget, editing, setWidget}) => {
         <div>
             {
                 editing &&
-                <div>
+                <>
+                    <select onChange={(e) =>
+                        setWidget({...widget, type: e.target.value, size: 1})}
+                            value={widget.type} className='form-control jo-editing-widgets'>
+                        <option value="PARAGRAPH">Paragraph</option>
+                        <option value="HEADING">Heading</option>
+                        <option value="LIST">List</option>
+                        <option value="IMAGE">Image</option>
+                    </select>
                     <input type="checkbox"
                            onChange={(e) => setWidget({...widget, ordered: e.target.checked})}
                            checked={widget.ordered}/>Ordered
@@ -15,7 +23,7 @@ const ListWidget = ({widget, editing, setWidget}) => {
                               className="form-control"
                               onChange={(e) => setWidget({...widget, text: e.target.value})}
                               value={widget.text}/>
-                </div>
+                </>
             }
             {
                 !editing &&

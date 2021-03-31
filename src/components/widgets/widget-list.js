@@ -61,28 +61,32 @@ const WidgetList = (
                                     </>
                             }
                             {
-                                widget.type === "HEADING" &&
+                                ((widget.id === editingWidget.id && editingWidget.type === "HEADING")
+                                    || (widget.id !== editingWidget.id && widget.type === "HEADING")) &&
                                 <HeadingWidget
                                     setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}
                                     widget={editingWidget.id === widget.id ? editingWidget : widget}/>
                             }
                             {
-                                widget.type === "PARAGRAPH" &&
+                                ((widget.id === editingWidget.id && editingWidget.type === "PARAGRAPH")
+                                    || (widget.id !== editingWidget.id && widget.type === "PARAGRAPH")) &&
                                 <ParagraphWidget
                                     setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}
                                     widget={editingWidget.id === widget.id ? editingWidget : widget}/>
                             }
                             {
-                                widget.type === "LIST" &&
+                                ((widget.id === editingWidget.id && editingWidget.type === "LIST")
+                                    || (widget.id !== editingWidget.id && widget.type === "LIST")) &&
                                 <ListWidget
                                     setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}
                                     widget={editingWidget.id === widget.id ? editingWidget : widget}/>
                             }
                             {
-                                widget.type === "IMAGE" &&
+                                ((widget.id === editingWidget.id && editingWidget.type === "IMAGE")
+                                    || (widget.id !== editingWidget.id && widget.type === "IMAGE")) &&
                                 <ImageWidget
                                     setWidget={setEditingWidget}
                                     editing = {editingWidget.id === widget.id}

@@ -7,7 +7,9 @@ const HeadingWidget = ({widget, editing, setWidget}) => {
             {
                 editing &&
                 <>
-                    <select onChange={(e) => setWidget({...widget, type: e.target.value, size: 1})}
+                    <select onChange={
+                        (e) =>
+                            setWidget({...widget, type: e.target.value, size: 1})}
                             className="form-control jo-editing-widgets"
                             value={widget.type}>
                         <option value="PARAGRAPH">Paragraph</option>

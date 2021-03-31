@@ -56,3 +56,23 @@ a {
     margin-right: 10px;
     padding-top: 5px;
 }
+
+.jo-module-list-height {
+    height: 100vh;
+}
+
+.jo-fake-button {
+    background-color: #6c757d;
+    color: white;
+    border-radius: 5px;
+}
+
+.jo-fake-button-active {
+    background-color: #2C3E50;
+    color: white;
+    border-radius: 5px;
+}
+
+.jo-pill-active {
+    background-color: lightsteelblue;
+}

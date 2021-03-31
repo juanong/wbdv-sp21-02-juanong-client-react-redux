@@ -6,6 +6,14 @@ const ImageWidget = ({widget, editing, setWidget}) => {
             {
                 editing &&
                     <>
+                        <select onChange={(e) =>
+                            setWidget({...widget, type: e.target.value, size: 1})}
+                                value={widget.type} className='form-control jo-editing-widgets'>
+                            <option value="PARAGRAPH">Paragraph</option>
+                            <option value="HEADING">Heading</option>
+                            <option value="LIST">List</option>
+                            <option value="IMAGE">Image</option>
+                        </select>
                         <label htmlFor="image-url">Image URL</label>
                         <input className="form-control" id="image-url"
                                onChange={(e) => setWidget({...widget, src: e.target.value})}

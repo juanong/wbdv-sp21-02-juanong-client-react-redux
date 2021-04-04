@@ -1,5 +1,9 @@
 .jo-title-col {
-    width: 50%;
+    width: 35%;
+}
+
+.jo-quizzes-col {
+    width: 15%;
 }
 
 .jo-owned-col {

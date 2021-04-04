@@ -35,6 +35,11 @@ const CourseRow = ({deleteCourse, updateCourse, course, key, lastModified, title
                        value={newTitle}/>
                 }
             </td>
+            <td>
+                <Link to={`/courses/${course._id}/quizzes`}>
+                    Quizzes
+                </Link>
+            </td>
             <td className="d-none d-sm-table-cell text-nowrap">{owner}</td>
             <td className="d-none d-lg-table-cell">{lastModified}</td>
             <td className="text-right">

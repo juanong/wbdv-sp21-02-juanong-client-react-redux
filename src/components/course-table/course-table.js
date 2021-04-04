@@ -22,6 +22,9 @@ export default class CourseTable extends React.Component {
                     <thead>
                     <tr>
                         <th className="jo-title-col h4">Title</th>
+                        <th className="jo-quizzes-col h4">
+                            Quizzes
+                        </th>
                         <th className="jo-owner-col
                                         d-none
                                         d-sm-table-cell h4">Owner</th>

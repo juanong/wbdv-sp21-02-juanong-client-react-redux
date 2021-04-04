@@ -7,6 +7,7 @@ import {Route, Redirect} from 'react-router-dom'
 import courseService from "../services/course-service";
 import Home from "./home";
 import "../index.css"
+import QuizzesList from "./quizzes/quizzes";
 
 // This class is responsible for rendering and managing all components of the course manager
 class CourseManager extends React.Component {
@@ -109,6 +110,12 @@ class CourseManager extends React.Component {
                     "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId",
                     "/courses/:layout/edit/:courseId/modules/:moduleId/lessons/:lessonId/topics/:topicId"]} exact={true}>
                     <CourseEditor/>
+                </Route>
+                <Route path="/courses/:courseId/quizzes" exact={true}>
+                    <QuizzesList/>
+                </Route>
+                <Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
+                    This is a quiz!!
                 </Route>
             </div>
         )

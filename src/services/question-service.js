@@ -1,4 +1,4 @@
-const QUESTIONS_URL = 'http://localhost:3000/api/quizzes/'
+const QUESTIONS_URL = 'http://localhost:3000/api/quizzes'
 
 export const findQuestionsForQuiz = (quizId) => {
     return fetch(`${QUESTIONS_URL}/${quizId}/questions`)

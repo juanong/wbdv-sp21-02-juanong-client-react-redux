@@ -8,6 +8,7 @@ import courseService from "../services/course-service";
 import Home from "./home";
 import "../index.css"
 import QuizzesList from "./quizzes/quizzes";
+import Quiz from "./quizzes/quiz";
 
 // This class is responsible for rendering and managing all components of the course manager
 class CourseManager extends React.Component {
@@ -115,7 +116,7 @@ class CourseManager extends React.Component {
                     <QuizzesList/>
                 </Route>
                 <Route path="/courses/:courseId/quizzes/:quizId" exact={true}>
-                    This is a quiz!!
+                    <Quiz/>
                 </Route>
             </div>
         )

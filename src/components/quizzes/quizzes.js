@@ -11,7 +11,7 @@ const QuizzesList = () => {
     useEffect(() => {
         quizService.findAllQuizzes()
             .then(allQuizzes => setQuizzes(allQuizzes))
-    }, [quizzes])
+    }, [])
 
     return (
         <div>

@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import questionService from '../../services/question-service'
 import quizService from '../../services/quiz-service'
 import TrueFalseQuestion from "./true-false-question";
+import MultipleChoiceQuestion from "./multiple-choice-question";
 
 
 const Quiz = () => {
@@ -34,9 +35,7 @@ const Quiz = () => {
                         }
                         {
                             q.type === "MULTIPLE_CHOICE" &&
-                                <>
-                                    MC Question
-                                </>
+                            <MultipleChoiceQuestion question={q}/>
                         }
                     </div>
                     )

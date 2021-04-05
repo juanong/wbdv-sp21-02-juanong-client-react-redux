@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import './quizzes.style.client.css'
-import {useParams} from "react-router-dom";
 
 const TrueFalseQuestion = ({question}) => {
 
@@ -16,11 +15,11 @@ const TrueFalseQuestion = ({question}) => {
                 <span className="float-right">
                     {
                         isCorrectAnswer !== null && isCorrectAnswer &&
-                        <i className="fas fa-check"></i>
+                        <i className="fas fa-check jo-color-green"></i>
                     }
                     {
                         isCorrectAnswer !== null && !isCorrectAnswer &&
-                        <i className="fas fa-times"></i>
+                        <i className="fas fa-times jo-color-red"></i>
                     }
                 </span>
             </h4>
@@ -34,7 +33,10 @@ const TrueFalseQuestion = ({question}) => {
                     <input type="radio"
                            name={question._id}
                            id={`${question._id}_true`}
-                           onChange={() => setCurrAnswer("true")}/>
+                           onChange={() => {
+                               setCurrAnswer("true")
+                               setIsCorrectAnswer(null)
+                           }}/>
                     <label for={`${question._id}_true`}>TRUE</label>
                     <span className="float-right">
                         {
@@ -57,7 +59,10 @@ const TrueFalseQuestion = ({question}) => {
                     <input type="radio"
                            name={question._id}
                            id={`${question._id}_false`}
-                           onChange={() => setCurrAnswer("false")}/>
+                           onChange={() => {
+                               setCurrAnswer("false")
+                               setIsCorrectAnswer(null)
+                           }}/>
                     <label for={`${question._id}_false`}>FALSE</label>
                     <span className="float-right">
                         {

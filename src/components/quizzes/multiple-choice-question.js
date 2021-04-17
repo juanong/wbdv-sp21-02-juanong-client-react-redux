@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './quizzes.style.client.css'
 
-const MultipleChoiceQuestion = ({question}) => {
+const MultipleChoiceQuestion = ({question, setQuestions, allQuestions}) => {
 
     const [currAnswer, setCurrAnswer] = useState("")
     const [isCorrectAnswer, setIsCorrectAnswer] = useState(null)
@@ -9,7 +9,16 @@ const MultipleChoiceQuestion = ({question}) => {
 
     const correctAnswer = question.correct
 
-    console.log(`${correctAnswer}, ${currAnswer}, ${isCorrectAnswer}`)
+    const updateQuestion = (choice) => {
+        setCurrAnswer(choice)
+        setIsCorrectAnswer(null)
+        let questionsCopy = [...allQuestions]
+        const qIndex = allQuestions.findIndex(q => q._id === question._id)
+        questionsCopy[qIndex] = {...question, answer: choice}
+        setQuestions(questionsCopy)
+    }
+
+    //console.log(`${correctAnswer}, ${currAnswer}, ${isCorrectAnswer}`)
 
     return (
         <div className="jo-quiz-question-spacing">
@@ -39,8 +48,7 @@ const MultipleChoiceQuestion = ({question}) => {
                                    name={question._id}
                                    id={`${question._id}_${ndx}`}
                                    onChange={() => {
-                                       setCurrAnswer(choice)
-                                       setIsCorrectAnswer(null)
+                                       updateQuestion(choice)
                                    }}/>
                             <label for={`${question._id}_${ndx}`}>{choice}</label>
                             <span className="float-right">
@@ -59,10 +67,6 @@ const MultipleChoiceQuestion = ({question}) => {
             </ul>
             <br/>
             <p>Your answer: {currAnswer}</p>
-            <button className="btn btn-success"
-                    onClick={() => {currAnswer === correctAnswer ? setIsCorrectAnswer(true) : setIsCorrectAnswer(false)}}>
-                Grade
-            </button>
         </div>
     )
 }

@@ -1,12 +1,21 @@
 import React, {useState} from 'react'
 import './quizzes.style.client.css'
 
-const TrueFalseQuestion = ({question}) => {
+const TrueFalseQuestion = ({question, setQuestions, allQuestions}) => {
 
     const [currAnswer, setCurrAnswer] = useState("")
     const [isCorrectAnswer, setIsCorrectAnswer] = useState(null)
 
     const correctAnswer = question.correct
+
+    const updateQuestion = (choice) => {
+        setCurrAnswer(choice)
+        setIsCorrectAnswer(null)
+        let questionsCopy = [...allQuestions]
+        const qIndex = allQuestions.findIndex(q => q._id === question._id)
+        questionsCopy[qIndex] = {...question, answer: choice}
+        setQuestions(questionsCopy)
+    }
 
     // To avoid code duplication, create an array of "choices"
     const choices = ["true", "false"]
@@ -40,8 +49,7 @@ const TrueFalseQuestion = ({question}) => {
                                    name={question._id}
                                    id={`${question._id}_${ndx}`}
                                    onChange={() => {
-                                       setCurrAnswer(choice)
-                                       setIsCorrectAnswer(null)
+                                       updateQuestion(choice)
                                    }}/>
                             <label for={`${question._id}_${ndx}`}>{choice.toUpperCase()}</label>
                             <span className="float-right">
@@ -60,10 +68,6 @@ const TrueFalseQuestion = ({question}) => {
             </ul>
             <br/>
             <p>Your answer: {currAnswer}</p>
-            <button className={"btn btn-success"}
-                    onClick={() => {currAnswer === correctAnswer ? setIsCorrectAnswer(true) : setIsCorrectAnswer(false)}}>
-                Grade
-            </button>
         </div>
     )
 }

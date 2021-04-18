@@ -11,7 +11,7 @@ const MultipleChoiceQuestion = ({question, setQuestions, allQuestions}) => {
 
     const updateQuestion = (choice) => {
         setCurrAnswer(choice)
-        setIsCorrectAnswer(null)
+        setIsCorrectAnswer(choice === correctAnswer)
         let questionsCopy = [...allQuestions]
         const qIndex = allQuestions.findIndex(q => q._id === question._id)
         questionsCopy[qIndex] = {...question, answer: choice}

@@ -14,6 +14,7 @@ const Quiz = () => {
     const [quizTitle, setQuizTitle] = useState("")
     const [questions, setQuestions] = useState([])
     const [score, setScore] = useState(null)
+    const [highlighted, setHighlighted] = useState(false)
 
     const [attempts, setAttempts] = useState([])
 
@@ -40,18 +41,23 @@ const Quiz = () => {
                     <div>
                         {
                             q.type === "TRUE_FALSE" &&
-                            <TrueFalseQuestion question={q} setQuestions={setQuestions} allQuestions={questions}/>
+                            <TrueFalseQuestion question={q} setQuestions={setQuestions} allQuestions={questions}
+                                               highlighted={highlighted}/>
                         }
                         {
                             q.type === "MULTIPLE_CHOICE" &&
-                            <MultipleChoiceQuestion question={q} setQuestions={setQuestions} allQuestions={questions}/>
+                            <MultipleChoiceQuestion question={q} setQuestions={setQuestions} allQuestions={questions}
+                                                    highlighted={highlighted}/>
                         }
                     </div>
                     )
                 }
             </div>
             <button className="btn btn-primary" onClick={() => {
-                quizService.submitQuiz(quizId, questions).then(results => setScore(results.score))
+                quizService.submitQuiz(quizId, questions).then(results => {
+                    setScore(results.score)
+                    setHighlighted(true)
+                })
             }}>Submit Quiz</button>
             <br/>
             <br/>

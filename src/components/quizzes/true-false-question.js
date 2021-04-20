@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import './quizzes.style.client.css'
 
-const TrueFalseQuestion = ({question, setQuestions, allQuestions}) => {
+const TrueFalseQuestion = ({question, setQuestions, allQuestions, highlighted}) => {
 
     const [currAnswer, setCurrAnswer] = useState("")
     const [isCorrectAnswer, setIsCorrectAnswer] = useState(null)
@@ -10,7 +10,7 @@ const TrueFalseQuestion = ({question, setQuestions, allQuestions}) => {
 
     const updateQuestion = (choice) => {
         setCurrAnswer(choice)
-        setIsCorrectAnswer(null)
+        setIsCorrectAnswer(choice === correctAnswer)
         let questionsCopy = [...allQuestions]
         const qIndex = allQuestions.findIndex(q => q._id === question._id)
         questionsCopy[qIndex] = {...question, answer: choice}
@@ -26,11 +26,11 @@ const TrueFalseQuestion = ({question, setQuestions, allQuestions}) => {
                 {question.question}
                 <span className="float-right">
                     {
-                        isCorrectAnswer !== null && isCorrectAnswer &&
+                        isCorrectAnswer !== null && isCorrectAnswer && highlighted &&
                         <i className="fas fa-check jo-color-green"></i>
                     }
                     {
-                        isCorrectAnswer !== null && !isCorrectAnswer &&
+                        isCorrectAnswer !== null && !isCorrectAnswer && highlighted &&
                         <i className="fas fa-times jo-color-red"></i>
                     }
                 </span>
@@ -42,8 +42,8 @@ const TrueFalseQuestion = ({question, setQuestions, allQuestions}) => {
                         <li className=
                                 {
                                     `list-group-item 
-                                    ${isCorrectAnswer !== null && correctAnswer === choice ? "list-group-item-success": ""}
-                                    ${isCorrectAnswer !== null && currAnswer === choice && correctAnswer !== choice ? "list-group-item-danger": ""}`
+                                    ${isCorrectAnswer !== null && correctAnswer === choice && highlighted ? "list-group-item-success": ""}
+                                    ${isCorrectAnswer !== null && currAnswer === choice && correctAnswer !== choice && highlighted ? "list-group-item-danger": ""}`
                                 }>
                             <input type="radio"
                                    name={question._id}
@@ -54,11 +54,11 @@ const TrueFalseQuestion = ({question, setQuestions, allQuestions}) => {
                             <label for={`${question._id}_${ndx}`}>{choice.toUpperCase()}</label>
                             <span className="float-right">
                                 {
-                                    isCorrectAnswer !== null && correctAnswer === choice &&
+                                    isCorrectAnswer !== null && correctAnswer === choice && highlighted &&
                                         <i className="fas fa-check"></i>
                                 }
                                 {
-                                    isCorrectAnswer !== null && currAnswer === choice && correctAnswer !== choice &&
+                                    isCorrectAnswer !== null && currAnswer === choice && correctAnswer !== choice && highlighted &&
                                         <i className="fas fa-times"></i>
                                 }
                             </span>
